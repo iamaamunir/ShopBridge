@@ -9,3 +9,6 @@ const server = http.createServer(app);
 server.listen(CONFIG.PORT, () => {
   console.log(`Server is running at PORT:${CONFIG.PORT}`);
 });
+
+import DbConnection from "./db/dbConfig.js";
+DbConnection();
