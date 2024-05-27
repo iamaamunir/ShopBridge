@@ -15,10 +15,14 @@ const registerAccountService = async (payload) => {
     mobile: payload.mobile,
     password: payload.password
   }); 
-  account = omit(account.toObject(), "password");
-  return {
-    user: account
-  };
+   const { password, ...accountWithoutPassword } = account.toObject
+     ? account.toObject()
+     : account;
+  return accountWithoutPassword;
+  // account = omit(account.toObject(), "password");
+  // return {
+  //   user: account
+  // };
 }
 
   export default registerAccountService
