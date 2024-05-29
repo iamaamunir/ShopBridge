@@ -1,9 +1,10 @@
 const errorHandler = (err, req, res, next) => {
-    if (err.statusCode) {
+      if (err.statusCode) {
       res.status(err.statusCode).json({
         error: err.error,
         message: err.message,
         statusCode: err.statusCode
+        
       });
     } else {
       res.status(500).json({

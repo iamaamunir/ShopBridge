@@ -1,4 +1,4 @@
-class ConflictError extends Error {
+export class ConflictError extends Error {
   constructor(message) {
     super(message);
     this.statusCode = 409;
@@ -6,7 +6,7 @@ class ConflictError extends Error {
   }
 }
 
-class NotFoundError extends Error {
+export class NotFoundError extends Error {
   constructor(message) {
     super(message);
     this.statusCode = 404;
@@ -14,4 +14,14 @@ class NotFoundError extends Error {
   }
 }
 
-export default { ConflictError, NotFoundError }
+export class invalidCredentials extends Error {
+  constructor(message) {
+    super(message);
+    this.statusCode = 401;
+    this.error = "Unauthorized";
+  }
+}
+
+
+
+// export default { ConflictError, NotFoundError, invalidCredentials };
