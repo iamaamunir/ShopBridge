@@ -22,6 +22,3 @@ export class invalidCredentials extends Error {
   }
 }
 
-
-
-// export default { ConflictError, NotFoundError, invalidCredentials };
