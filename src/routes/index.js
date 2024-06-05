@@ -1,8 +1,8 @@
 import express from 'express'
-import authRouter from '../controllers/index.js'
+import userRouter from '../controllers/index.js'
 const indexRouter = express.Router()
 
 
-indexRouter.use("/auth", authRouter);
+indexRouter.use("/user", userRouter);
 
 export default indexRouter;
