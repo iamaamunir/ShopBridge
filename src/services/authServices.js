@@ -18,7 +18,7 @@ export const registerAccountService = async function (payload) {
     password: payload.password,
   });
 
-  // refactor code later
+ 
   const { password,__v, ...accountWithoutPassword } = account.toObject
     ? account.toObject()
     : account;
@@ -45,4 +45,3 @@ export const loginAccountService = async function(payload) {
   }
 };
 
-// export default registerAccountService;
