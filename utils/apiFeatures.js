@@ -7,7 +7,7 @@ class APIFeatures {
   async paginate() {
     const isPaginated = this.queryString.isPaginated === true;
 
-    let { page = 1, limit = 10 } = this.queryString;
+    let { page = 1, limit = 1 } = this.queryString;
     page = Number(page);
     limit = Number(limit);
 
