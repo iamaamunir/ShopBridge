@@ -37,5 +37,3 @@ export const loginAccount = async function(req, res, next) {
     next(error)
   }
 }
-
-export default registerAccount;
