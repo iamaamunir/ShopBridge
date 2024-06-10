@@ -2,6 +2,7 @@ import User from "../models/userModel.js";
 import APIFeatures from "../../utils/apiFeatures.js";
 import * as customErrors from "../../utils/customErrors.js";
 import RESPONSE_MESSAGE from "../../constant/index.js";
+import  verifyCredentials  from "../../utils/helper.js";
 
 export const getAccounts = async function ({ query }) {
   try {
@@ -21,5 +22,29 @@ export const getAccount = async function (id, next) {
     return account;
   } catch (error) {
     throw new customErrors.NotFoundError(RESPONSE_MESSAGE.NOT_FOUND);
+  }
+};
+
+export const deleteAccount = async function (id, password) {
+  try {
+    const account = await User.findById({ _id: id });
+    if (!account) {
+      throw new customErrors.NotFoundError(RESPONSE_MESSAGE.NOT_FOUND);
+    }
+    const deletedAccount = await verifyCredentials(account.email, password);
+    if (!deletedAccount) {
+      throw new customErrors.invalidCredentials(
+        RESPONSE_MESSAGE.INVALIDCRENDENTIALS
+      );
+    }
+    
+    const accountDel = await User.findByIdAndDelete({ _id: id });
+    // add later to user model
+    //    account.isDeleted = true;
+    // account.save();
+
+    return accountDel;
+  } catch (error) {
+    return error;
   }
 };
